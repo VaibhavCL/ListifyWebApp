@@ -1,0 +1,1707 @@
+﻿@model  IEnumerable<ListifyWebApp.Models.ToDoModel>
+
+@{
+    ViewBag.Title = "ToDoList";
+}
+
+@*<h2>ToDoList</h2>*@
+
+
+<html>
+<head>
+    <title>list</title>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/cssScript/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <style type="text/css">
+
+
+
+        .container {
+            padding-left: 0px;
+            margin-top: 20px;
+            margin-left: -20px;
+            max-width: 1450px;
+            width: 100%;
+        }
+
+
+        .dropdown-menu > li > a {
+            padding-top: 5px;
+        }
+
+
+        #dat {
+            font-weight: 450 !important;
+            font-size: 20px !important;
+        }
+
+        .img-responsive {
+            z-index: 1;
+            position: absolute;
+            margin-left: 0px;
+            width: 100%
+        }
+
+        .dropdown {
+            position: absolute;
+            z-index: 2;
+            text-align: right;
+            margin-left: 90%;
+            padding-left: 0px;
+            background-color: transparent;
+            margin-top: -30px;
+        }
+
+        #btn {
+            background-color: transparent;
+            color: white;
+            font-size: 18px !important;
+        }
+
+
+
+
+        a {
+            text-align: center;
+            background-color: white;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .dropdown-menu {
+            text-align: center;
+        }
+
+
+
+        h2 {
+            top: 40px;
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+            font-size: 30px !important;
+            font-weight: 500 !important;
+            margin-bottom: 20px;
+            background-color: transparent;
+        }
+
+        #add {
+            text-align: center;
+            background-color: transparent;
+            color: white;
+            border: 3px solid white;
+            font-size: 20px;
+            padding: 5px;
+            position: relative;
+            z-index: 4;
+            border-radius: 10px;
+            width: 30%;
+            margin-right: 3%;
+            border-color: white !important;
+            padding-bottom: 10px !important;
+        }
+
+        .addnew {
+            text-align: right;
+            margin-right: -3%;
+        }
+
+
+
+        @@media (max-width:1024px) {
+
+            body {
+                background: -webkit-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -o-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -ms-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -moz-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: linear-gradient(179deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background-repeat: no-repeat;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+
+            .des {
+                display: none;
+                font-weight: bold;
+            }
+
+
+
+            #dd {
+                margin-left: 10% !important;
+                float: right;
+                margin-right: 2.5% !important;
+                width: 120px !important;
+                font-weight: 500 !important;
+                left: 5px !important;
+                font-size: 20px;
+                background-color: white;
+                border-radius: 0px !important;
+            }
+
+            .dropdown-menu_show {
+                position: absolute;
+                top: 0px;
+                margin-left: 87% !important;
+                width: 150px;
+            }
+
+            .descri {
+                display: none;
+            }
+
+            .add_title {
+                width: 100% !important;
+                max-width: 90% !important;
+                height: 50px;
+                font-size: 15px !important;
+                margin-left: 2% !important;
+                color: black;
+            }
+
+            .form-control {
+                font-size: 8px !important;
+                font-weight: 450 !important;
+            }
+
+            .des_area {
+                width: 100% !important;
+                max-width: 90% !important;
+                font-size: 15px !important;
+                padding: 10px;
+            }
+
+
+            #dat {
+                font-size: 15px !important;
+                margin-left: 2% !important;
+                width: 100%;
+                max-width: 10%;
+                position: relative;
+                margin-left: 10% !important;
+            }
+
+            #df {
+                font-size: 15px !important;
+                margin-left: 1% !important;
+                width: 100%;
+                max-width: 30%;
+                position: relative;
+                margin-left: 12% !important;
+            }
+
+            .modal-content {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-left: -75% !important;
+                border-radius: 0%;
+            }
+
+            .descri {
+                display: none;
+            }
+
+
+
+            #df {
+                width: 100%;
+                max-width: 50%;
+            }
+
+            #dt {
+                float: center !important;
+            }
+
+
+
+            h2 {
+                top: 40px;
+                color: white;
+                text-align: center;
+                position: relative;
+                z-index: 3;
+                font-weight: bold;
+                font-size: 2em;
+                font-family: 'Lucida Grande';
+            }
+
+            .container1 {
+                overflow-y: auto;
+                height: 400px !important;
+                border-color: grey;
+                width: 94% !important;
+            }
+
+            .modal-title {
+                padding-left: 120px;
+                position: relative;
+                font-size: 20px;
+                color: black;
+            }
+
+            .des_area {
+                max-width: 90%;
+                border: 1px solid #DBDBDB;
+                margin-left: 5%;
+                color: black;
+            }
+
+            .savebtn {
+                background-color: #5194D4;
+                color: white;
+                width: 45%;
+                text-align: center;
+                padding: 7px;
+                font-weight: bold;
+                font-size: 20px;
+                border: 1px solid #DBDBDB;
+            }
+
+            #p1 {
+                margin-top: auto;
+                margin-bottom: 1rem;
+                color: black;
+                font-weight: bold;
+                padding: 5px;
+                text-align: right;
+                font-size: 15px;
+                font-family: 'Lucida Grande';
+            }
+
+            #delcontent {
+                width: 65% !important;
+                margin-top: 60% !important;
+                margin-left: -100% !important;
+                border-radius: 0px !important;
+                height: 15%;
+            }
+
+            #add {
+                width: 25%;
+            }
+        }
+
+        @@media(min-width:1200px)and (max-width:1289px) {
+            #add {
+                width: 22% !important;
+            }
+
+            .dropdown {
+                position: absolute;
+                z-index: 2;
+                text-align: right;
+                margin-left: 87% !important;
+                padding-left: 0px;
+                background-color: transparent;
+                margin-top: -70px !important;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 1400px;
+                margin-left: -19px;
+            }
+
+            .container1 {
+                height: 500px;
+                width: 92% !important;
+            }
+            .modal-content
+            {
+                margin-left:-93%!important;
+            }
+            #delcontent
+            {
+                margin-left:-60%!important;
+            }
+            #datepos1
+            {
+                font-size:20px!important;
+            }
+            
+        }
+
+        @@media(min-width:1290px) and (max-width:1590px) {
+            .container {
+                width: 100%;
+                max-width: 1620px !important;
+                margin-left: -19px;
+            }
+
+            .container1 {
+                height: 450px;
+                margin-left: 5% !important;
+            }
+
+            #add {
+                margin-right: 0% !important;
+            }
+
+            .dropdown {
+                position: absolute;
+                z-index: 2;
+                text-align: right;
+                margin-left: 89% !important;
+                padding-left: 0px;
+                background-color: transparent;
+                margin-top: -73px !important;
+            }
+
+            h2 {
+                font-size: 35px !important;
+                margin-left: 3% !important;
+            }
+
+            .modal-content {
+                margin-left: -104% !important;
+                margin-top: -3%!important;
+            }
+
+            #delcontent {
+                width: 43%;
+                margin-top: 43% !important;
+                margin-left: -66% !important;
+                border-radius: 0px;
+                height: 15%;
+            }
+
+            #datepos1 {
+                font-size: 20px !important;
+            }
+        }
+
+        @@media(width:1600px) {
+            .container {
+                width: 100%;
+                max-width: 1620px !important;
+                margin-left: -19px;
+            }
+
+            .container1 {
+                height: 450px;
+                margin-left: 5% !important;
+            }
+
+            #add {
+                margin-right: 0% !important;
+            }
+
+            .dropdown {
+                position: absolute;
+                z-index: 2;
+                text-align: right;
+                margin-left: 89% !important;
+                padding-left: 0px;
+                background-color: transparent;
+                margin-top: -73px !important;
+            }
+
+            h2 {
+                font-size: 35px !important;
+                margin-left: 3% !important;
+            }
+
+            .modal-content {
+                margin-left: -111% !important;
+                margin-top: -3% !important;
+                text-align : center;
+            }
+
+            #delcontent {
+                width: 43%;
+                margin-top: 43% !important;
+                margin-left: -90% !important;
+                border-radius: 0px;
+                height: 15%;
+            }
+
+            #datepos1 {
+                font-size: 20px !important;
+            }
+        }
+
+        @@media(min-width:1680px) and (max-width:1700px) {
+
+            .container1 {
+                z-index: 5;
+                position: relative;
+                background-color: white;
+                border: 1px solid #DBDBDB;
+                width: 100% !important;
+                margin-left: 11% !important;
+                /* height: 200px !important; */
+                overflow-y: auto !important;
+            }
+
+            .dropdown {
+                position: absolute;
+                z-index: 2;
+                text-align: right;
+                margin-left: 90% !important;
+                padding-left: 0px;
+                background-color: transparent;
+                margin-top: -80px !important;
+            }
+
+            #add {
+                text-align: center;
+                background-color: transparent;
+                color: white;
+                border: 3px solid white;
+                font-size: 20px;
+                padding: 5px;
+                position: relative;
+                z-index: 4;
+                border-radius: 10px;
+                width: 20% !important;
+                margin-right: -11% !important;
+                border-color: white !important;
+                padding-bottom: 10px !important;
+            }
+
+            h2 {
+                font-size: 40px !important;
+                margin-left: 24% !important;
+            }
+
+            .modal-content {
+                margin-left: -122% !important;
+                margin-top: -6% !important;
+            }
+
+            #delcontent {
+                margin-left: -625px !important;
+                margin-top: 350px !important;
+            }
+            #datepos1
+            {
+                font-size:20px!important;
+            }
+        }
+        /*@@media (min-width: 768px) {
+            body {
+                background: -webkit-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -o-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -ms-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -moz-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: linear-gradient(179deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background-repeat: no-repeat;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+
+            #df {
+                -webkit-box-flex: 0;
+                max-width: 55%;
+                margin-left: -20px;
+                padding-left: 50px;
+            }
+
+            #delcontent {
+                margin-left: -100%;
+            }
+        }*/
+
+        @@media(width:1024px) {
+            #dc {
+                padding-left: 20% !important;
+                padding-top: 20% !important;
+            }
+
+            .dropdown {
+                position: absolute;
+                z-index: 2;
+                text-align: right;
+                margin-left: 84%;
+                padding-left: 0px;
+                background-color: transparent;
+                margin-top: -70px;
+                font-size:15px!important;
+            }
+
+            #dd {
+                position: absolute;
+                transform: translate3d(0px, 54px, 0px);
+                top: 0px;
+                left: 10px !important;
+                will-change: transform;
+            }
+
+            .container1 {
+                height: 700px !important;
+            }
+            #btn
+            {
+                font-size:33px!important;
+            }
+            .add_title
+            {
+                font-size:22px!important;
+            }
+            h2
+            {
+                font-size:40px!important;
+            }
+        }
+
+        @@media (min-width:1024px) {
+
+            .modal-content {
+                margin-left: -110%;
+                margin-top: 3%;
+            }
+
+            #dd {
+                margin-left: 20% !important;
+                float: right;
+                margin-right: 1% !important;
+                width: 130px !important;
+            }
+
+            .form-control {
+                width: 55% !important;
+                font-size: 15px !important;
+                background-color: white !important;
+                color: black;
+                font-weight: 450 !important;
+                margin-left: -20px !important;
+                height: 36px !important;
+            }
+
+
+
+
+
+            #add {
+                width: 15%;
+                padding-bottom: 10px !important;
+            }
+
+            .add_title {
+                border: 1px solid #DBDBDB;
+                border-radius: 5px;
+                margin-left: 5%;
+                width: 100%;
+                max-width: 600px;
+                margin-bottom: 5%;
+                padding: 7px;
+                margin-right: 5%;
+                margin-top: 10px;
+                font-size: 20px;
+                color: black !important;
+                font-weight: normal;
+            }
+
+            .des_area {
+                width: 100%;
+                max-width: 600px;
+                margin-right: 5%;
+                border: 1px solid #DBDBDB;
+                margin-left: 5%;
+                font-size: 20px !important;
+                font-weight: normal;
+                color: black !important;
+                padding-top: 10px;
+                padding-left: 10px;
+            }
+
+            .modal-title {
+                padding-left: 300px;
+                color: black;
+                font-family: Lucida Grande Bold;
+                font-size: 25px;
+                font-weight: bold;
+                position: relative;
+            }
+
+
+            .savebtn {
+                background-color: #5194D4;
+                color: white;
+                width: 35%;
+                text-align: center;
+                padding: 7px;
+                font-weight: bold;
+                font-size: 20px;
+                border: 1px solid #DBDBDB;
+                margin-left: 8%;
+                font-family: 'Lucida Grande';
+            }
+
+            .modal-dialog {
+                max-width: 700px;
+                margin: 1.75rem auto;
+            }
+        }
+
+
+
+
+
+        .container1 {
+            z-index: 5;
+            position: relative;
+            background-color: white;
+            border: 1px solid #DBDBDB;
+            /*width: 98%;*/
+            margin-left: 6%;
+            /*height: 200px !important;*/
+            overflow-y: auto;
+        }
+
+        .table td, .table th {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .table th {
+            border-bottom: 1px solid black !important;
+        }
+
+        .table td {
+            border-bottom: 1px solid black !important;
+        }
+
+        .table td {
+            line-height: 45px;
+        }
+
+        .del {
+            height: 22px;
+            width: 27px;
+            padding-left: 10px;
+            margin-top: 25px;
+        }
+
+        .edit {
+            height: 20px;
+            width: 20px;
+            margin-top: 25px;
+            margin-right: 20px;
+        }
+        /*.modal-title
+        {
+            padding-left: 200px;
+            color:black;
+            font-family: Lucida Grande Bold;
+            font-size: 20px;
+            font-weight: bold;
+        }*/
+
+        .add_title {
+            border: 1px solid #DBDBDB !important;
+            color: black !important;
+            border-radius: 5px !important;
+            margin-left: 5% !important;
+            width: 90% !important;
+            margin-bottom: 5% !important;
+            padding: 10px !important;
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        .descr {
+            border: 1px solid #DBDBDB;
+            color: black !important;
+            margin-left: 5%;
+            width: 90%;
+            height: 200px;
+            margin-bottom: 5%;
+            text-align: top-left;
+            font-size: 20px !important;
+            font-weight: normal;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+
+
+
+        .modal-footer {
+            justify-content: center;
+        }
+
+        input[type=date], input[type=datetime-local], input[type=month], input[type=time] {
+            -webkit-appearance: listbox;
+            color: #B4B4B4 !important;
+            font-weight: bold;
+            border: 1px solid #DBDBDB;
+            border-radius: 5px;
+            padding: 4px;
+            font-size: 13px;
+        }
+
+        #center {
+            font-weight: bold;
+            background-color: white;
+            color: black;
+        }
+
+
+        #p1 {
+            margin-top: auto;
+            margin-bottom: 1rem;
+            color: black;
+            font-weight: bold;
+            padding: 5px;
+            font-size: 20px;
+            text-align: left;
+            width: 80%;
+            font-family: 'Lucida Grande';
+        }
+
+
+        #delcontent {
+            width: 43%;
+            margin-top: 50%;
+            margin-left: -80%;
+            border-radius: 0px;
+            height: 15%;
+        }
+
+        .caret {
+            display: none;
+        }
+
+
+        .table td {
+            line-height: 75px !important;
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        .table th {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 20px !important;
+        }
+
+        #tittle {
+            font-weight: bold;
+            font-size: 18px!important;
+            padding-top: 20px;
+        }
+
+        .des {
+            font-weight: bold !important;
+            padding:1.75rem!important;
+            font-size:15px!important;
+        }
+
+        .table tr {
+            border-color: black;
+        }
+
+
+
+        label {
+            margin-left: 15% !important;
+        }
+
+        .input-group-addon, .input-group-btn {
+            /*width: 1%;*/
+            white-space: nowrap;
+            vertical-align: middle;
+            padding-right: 20px;
+            font-size: 15px;
+        }
+
+        #dt {
+            color: grey;
+            font-size: 16px;
+            font-weight: 400;
+            padding-top: 20px;
+        }
+
+
+        .deleteToDo {
+            background-color: #5194D4 !important;
+            color: white !important;
+            width: 30% !important;
+            padding: 5px !important;
+            font-size: 20px !important;
+            margin-left: 28% !important;
+            border-color: #D7D7D7 !important;
+        }
+
+        #no {
+            width: 30%;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            margin-left: 5%;
+            background-color: #F1F1F1;
+            border-color: #D7D7D7;
+            margin-top: -12px;
+        }
+
+        .descri {
+            font-weight: 500 !important;
+            font-size: 16px !important;
+            color: black;
+            padding-top: 20px !important;
+        }
+
+        #lout {
+            font-size: 20px;
+            font-weight: 500 !important;
+            background-color: white;
+        }
+
+        .table {
+            border-color: black !important;
+            background-color: white;
+            border-top-color: black !important;
+            border-right-color: black !important;
+            border-bottom-color: black !important;
+            border-left-color: black !important;
+        }
+
+        body {
+            background: -webkit-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+            background: -o-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+            background: -ms-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+            background: -moz-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+            background: linear-gradient(179deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+
+        @@media (min-width: 768px) and (max-width: 1023px) {
+
+            body {
+                background: -webkit-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -o-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -ms-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -moz-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: linear-gradient(179deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background-repeat: no-repeat;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+
+            .dropdown {
+                position: absolute;
+                z-index: 2;
+                text-align: right;
+                margin-left: 80% !important;
+                padding-left: 0px;
+                background-color: transparent;
+                margin-top: -75px !important;
+            }
+
+
+            .modal-content {
+                margin-left: -70% !important;
+                border-radius: 0%;
+                width: 100% !important;
+                max-width: 90% !important;
+            }
+
+            #btn {
+                font-size: 22px !important;
+            }
+
+            #datepos1 {
+                font-size: 15px;
+                margin-top: 5px;
+            }
+
+            #dc {
+                margin-left: -15% !important;
+                margin-top: 30% !important;
+            }
+            /*.container1 {
+                z-index: 5;
+                position: relative;
+                background-color: white;
+                border: 1px solid #DBDBDB;
+                width: 100%;
+                margin-left: 6%;
+                height: 500px !important;
+                overflow-y: auto;
+            }*/
+            .container {
+                width: 100%;
+                max-width: 800px !important;
+                margin-left: -5px !important;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            .des {
+                display: none;
+                font-weight: bold;
+            }
+
+
+            #dd {
+                margin-left: 8% !important;
+                float: right;
+                margin-right: 2.5% !important;
+                width: 120px !important;
+                font-weight: 500 !important;
+                font-size: 20px;
+                background-color: white;
+                border-radius: 0px !important;
+            }
+
+            .dropdown-menu_show {
+                position: absolute;
+                top: 0px;
+                margin-left: 87% !important;
+                width: 150px;
+            }
+
+            .descri {
+                display: none;
+            }
+
+            .add_title {
+                width: 100% !important;
+                max-width: 90% !important;
+                height: 50px;
+                font-size: 15px !important;
+                margin-left: 5% !important;
+                color: black;
+            }
+
+            .form-control {
+                font-size: 8px !important;
+                font-weight: 450 !important;
+            }
+
+            .des_area {
+                width: 100% !important;
+                max-width: 90% !important;
+                font-size: 15px !important;
+                padding: 10px;
+            }
+
+
+            #dat {
+                font-size: 15px !important;
+                margin-left: 2% !important;
+                width: 100%;
+                max-width: 10%;
+                position: relative;
+                margin-left: 10% !important;
+            }
+
+            #df {
+                font-size: 15px !important;
+                margin-left: 1% !important;
+                width: 100%;
+                max-width: 30%;
+                position: relative;
+                margin-left: 12% !important;
+            }
+            /*.modal-content {
+                width: 100% !important;
+                max-width: 80% !important;
+                margin-left: 20%;
+                border-radius: 0%;
+            }*/
+            .descri {
+                display: none;
+            }
+
+
+
+            #df {
+                width: 100%;
+                max-width: 50%;
+            }
+
+            #dt {
+                float: center !important;
+            }
+
+
+
+            h2 {
+                top: 40px;
+                color: white;
+                text-align: center;
+                position: relative;
+                z-index: 3;
+                font-weight: bold;
+                font-size: 2em;
+                font-family: 'Lucida Grande';
+            }
+
+
+            .modal-title {
+                padding-left: 120px;
+                position: relative;
+                font-size: 20px;
+                color: black;
+            }
+
+            .des_area {
+                max-width: 90%;
+                border: 1px solid #DBDBDB;
+                margin-left: 5%;
+                color: black;
+            }
+
+            .savebtn {
+                background-color: #5194D4;
+                color: white;
+                width: 45%;
+                text-align: center;
+                padding: 7px;
+                font-weight: bold;
+                font-size: 20px;
+                border: 1px solid #DBDBDB;
+            }
+
+            #p1 {
+                margin-top: auto;
+                margin-bottom: 1rem;
+                color: black;
+                font-weight: bold;
+                padding: 5px;
+                text-align: right;
+                font-size: 15px;
+                font-family: 'Lucida Grande';
+            }
+
+            #delcontent {
+                width: 65% !important;
+                margin-top: 60% !important;
+                margin-left: 20% !important;
+                border-radius: 0px !important;
+                height: 15%;
+            }
+        }
+
+        @@media (max-width: 600px) {
+            body {
+                background: -webkit-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -o-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -ms-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: -moz-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background: linear-gradient(179deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+                background-repeat: no-repeat;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+            #delcontent
+            {
+                margin-left:55px!important;
+                margin-top:220px!important;
+            }
+
+            #lout {
+                font-size: 15px !important;
+                font-family: 'Lucida Grande';
+            }
+
+            .container1 {
+                z-index: 5;
+                position: relative;
+                background-color: white;
+                border: 1px solid #DBDBDB;
+                width: 100%;
+                margin-left: 14%;
+                height: 300px !important;
+            }
+
+            #add {
+                text-align: center;
+                background-color: transparent;
+                color: white;
+                border: 3px solid white;
+                font-size: 20px;
+                padding: 5px;
+                position: relative;
+                z-index: 4;
+                border-radius: 10px;
+                width: 40%;
+                margin-right: -9%;
+                border-color: white !important;
+                padding-bottom: 10px !important;
+                margin-top: -20px;
+                font-family:'Lucida Grande';
+            }
+
+            #datepos1 {
+                font-size: 15px!important;
+                width: 11%;
+                margin-left: -20px;
+                margin-top: 5px;
+                margin-left: 25px !important;
+                margin-right: 7px !important;
+                font-family: 'Lucida Grande';
+            }
+
+            #datepos2 {
+                width: 75% !important;
+                font-family: 'Lucida Grande';
+            }
+
+
+            table {
+                height: 100%;
+                max-height: 300px;
+            }
+            /*th
+            {
+                height:70px;
+
+
+            }*/
+            tbody {
+                height: 100%;
+                max-height: 250px;
+                overflow-y: auto;
+            }
+
+            h2 {
+                top: 5px;
+                color: white;
+                text-align: center;
+                position: relative;
+                z-index: 3;
+                font-weight: bold;
+                font-size: 2em;
+                margin-left: 20%;
+                font-family: 'Lucida Grande';
+            }
+
+            #btn {
+                background-color: transparent;
+                color: white;
+                font-size: 23px !important;
+                font-family: 'Lucida Grande';
+            }
+
+            .dropdown {
+                position: absolute;
+                z-index: 2;
+                text-align: right;
+                margin-left: 68%;
+                padding-left: 0px;
+                background-color: transparent;
+                margin-top: -75px;
+                font-family: 'Lucida Grande';
+            }
+
+            #dd {
+                margin-left: 23% !important;
+                float: right;
+                margin-right: 2.5% !important;
+                width: 90px !important;
+                font-weight: 500 !important;
+                font-size: 20px;
+                background-color: white;
+                border-radius: 0px !important;
+                left: -10px;
+                font-family: 'Lucida Grande';
+            }
+
+            .modal-content {
+                width: 100% !important;
+                max-width: 95% !important;
+                margin-left: 1% !important;
+                border-radius: 0%;
+            }
+
+            .row {
+                text-align: left;
+            }
+        }
+
+        h4 {
+            font-family: 'Lucida Grande' !important;
+            font-weight: normal !important;
+        }
+
+        #desModal {
+            overflow-y: hidden;
+        }
+
+        #myModal {
+            overflow-y: hidden;
+        }
+        #addTodoTitleError{
+            font-size : 15px;
+            color : red;
+        }
+
+
+    </style>
+
+
+
+
+
+</head>
+<body>
+
+    <div class="container">
+        <!--logout dropdown -->
+        <div class="dropdown">
+            <button id="btn" class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+               @User.Identity.Name
+                <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu" id="dd">
+                <li>@Html.ActionLink("Logout", "LogOff", "Account")</li>
+            </ul>
+
+            <div class="navbar-collapse collapse">
+                @*<ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Logout", "Logout", "ToDo")</li>
+
+                </ul>*@
+            </div>
+
+        </div>
+    </div>
+
+
+
+    @*my list*@
+    <div>
+        <h2>My List</h2>
+    </div>
+    <br>
+
+    @*add new*@
+
+
+    <div class="addnew">
+        <div class="container">
+
+            <button id="add" &#8203;class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add New</button>
+            <br />
+            <br />
+            <br />
+            <!-- The Modal -->
+
+            <div class="container1" style="overflow-y: auto;  max-height:768px ">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th class="des">Description</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td data-toggle="modal"  data-target="#desModal" id="tittle" onclick="detailsToDo(@item.Id)">@item.Title</td>
+                            <td class="des">@item.Description</td>
+                            <td id="dt">@item.date</td>
+                            <td>
+                                <span display="inline-block">
+                                    <a href="#" onclick="editTodo(@item.Id)">
+                                        <img class="edit" src="~/Content/Image/edit.png" data-toggle="modal" data-target="#editModal">
+                                    </a>
+                                    <span>&nbsp;</span>
+                                    <a href="#" onclick="deleteTodo(@item.Id)">
+                                        <img class="del" src="~/Content/Image/del.png" data-toggle="modal" data-target="#myModal3">
+                                    </a>
+                                    <a href="#"></a>
+                                </span>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!--Modals-->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add New</h4>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <input id="addTodoTitle" oninput="validateTitle()"
+                                     class="add_title" type="text" name="Title" placeholder="Title">
+                            <span id="titleError" style="font-size:15px; color:red"></span>
+
+                            <textarea id="addTodoDesc" rows="10" cols="57" padding="7px" class="des_area" placeholder="Description"></textarea>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <label for="dtp_input1" class="col-sm-2 control-label" id="datepos1">Date:</label>
+                                <div id="datepos2" class="input-group date form_datetime col-sm-6" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                                    <input class="form-control addTodoDate" size="16" type="text" value="" readonly="">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                </div>
+                                <input type="hidden" id="dtp_input1" value=""><br>
+                            </div>
+                            <span id="addTodoTitleError"></span>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" id="saveTodoBtn" class="savebtn">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog modal-sm" id="dc">
+        <div class="modal-content" id="delcontent">
+
+            <div class="modal-body">
+                <p id="p1">Are you sure you want to delete?</p>
+                <button type="button" id="yes" border-color: #D7D7D7 class="deleteToDo" data-dismiss="modal">YES</button>
+                <button type="button" class="btn btn-lg" id="no" data-dismiss="modal">NO</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="desModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Details</h4>
+
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <input id="detailsToDoTitle" class="add_title disabled" type="text" name="Title" placeholder="Title" readonly>
+                <textarea id="detailsToDoDesc" rows="10" cols="57%" padding="7px" class="des_area disabled" placeholder="Description" readonly></textarea>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <label for="dtp_input1" class="col-md-2 control-label" id="datepos1">Date:</label>
+
+                    <div id="datepos2" class="input-group date col-md-6 disabled" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                        <input class="form-control" id="detailsToDoDate" size="16" type="text" value="" readonly>
+                        <span class="input-group-addon" style="height:36px"><span class="glyphicon glyphicon-remove disabled"></span></span>
+                        <span class="input-group-addon" style="height:36px"><span class="glyphicon glyphicon-th disabled"></span></span>
+                    </div>
+
+                    <input type="hidden" id="dtp_input1" value=""><br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <!-- Modal footer -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit</h4>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <input id="editToDoTitle" class="add_title" type="text" name="Title" placeholder="Title">
+
+                    <textarea id="editToDoDesc"  rows="10" cols="57%" padding="7px" class="des_area" placeholder="Description"></textarea>
+                    <br>
+                    <br>
+                    <!--<center id="center">Date:<input type="Date" name="Date"></center>-->
+
+                    <div class="row">
+                        <label for="dtp_input1"  class="col-md-2 control-label" id="datepos1">Date:</label>
+
+                        <div id="datepos2" class="input-group date form_datetime col-md-6" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                            <input class="form-control" id="editToDoDate" size="16" type="text" value="" readonly="">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                        <input type="hidden" id="dtp_input1" value=""><br>
+
+                    </div>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" id="editToDo" class="savebtn">Save</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+@*<script src="~/Content/jss/jquery-1.8.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="~/Content/jss/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="~/Content/jss/bootstrap-datetimepicker.js"></script>
+    <script src="~/Content/jss/bootstrap-datetimepicker.fr.js"></script>*@
+<script type="text/javascript" src="~/Content/jss/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="~/Content/jss/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Content/jss/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="~/Content/jss/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script type="text/javascript">
+
+    //$(".add_title").oninput(function () {
+    //    alert("Handler for .change() called.");
+    //});
+
+
+
+    var todoId = 0;
+        $('.form_datetime').datetimepicker({
+            //language:  'fr',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1,
+            format:"dd/MM/yyyy hh:mm"
+    });
+
+
+
+
+
+    // This is used for AddNew function in ToDo
+        $("#other").click(function () {
+            $("#target").click();
+    });
+
+        $("#saveTodoBtn").click(function () {
+
+            var _title = $("#addTodoTitle").val();
+            var _desc = $("#addTodoDesc").val();
+            var _date = $(".addTodoDate").val();
+            if (_title != "" && _date != "" )
+            {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddToDo", "ToDo")',
+                    data: { title: _title, description: _desc, date: _date },
+                    success: function (resultData) {
+                        window.location.href = '@Url.Action("ToDoList", "ToDo")';
+                    }
+                });
+                $("#addTodoTitleError").text("");
+            }
+            else if (_title == "" || _date == "" )
+            {
+                $("#addTodoTitleError").text("Please enter the title and date to continue");
+
+            }
+        });
+
+        function validateTitle()
+        {
+            
+            var numRegx = /^[A-Za-z]+$/;
+            var _title = $("#addTodoTitle").val();
+            if (!numRegx.test(_title)) {
+                //alert("Sorry! Numbers are not allowed");
+                $("#titleError").text("Please enter the valid title").show();
+            }
+            else 
+            {
+                $("#titleError").text("Please enter the valid title").hide();
+            }
+           
+        }
+
+        function editTodo(id) {
+            $("#editModal").modal('show');
+            var className = $("#editModal")[0].className;
+            $("#editModal").removeClass(className);
+            $("#editModal").addClass("modal fade show in");
+            //$("#editModal").addClass("modal fade show");
+            //$("#editModal").addClass("modal fade");
+            todoId = id;
+            $("#ToDoId").val(id);
+            $.ajax({
+                type: "GET",
+                url:  '@Url.Action("GetTodoById","ToDo")',
+                data: { toDoId: id },
+                success: function (resultData) {
+                    $("#editToDoTitle").val(resultData.toDoModel.Title);
+                    $("#editToDoDesc").text(resultData.toDoModel.Description);
+                    //$("#editToDoDate").data("datetimepicker").setMinDate(resultData.toDoModel.date);
+                    $('#editToDoDate').val(moment(resultData.toDoModel.date, "DD/MM/YYYY HH:mm").format("DD/MM/YYYY HH:mm"));
+                }
+            });
+        }
+
+     function deleteTodo(id) {
+         $("#myModal3").modal('show');
+         $(".deleteToDo").attr("id", id);
+        }
+
+    //This is used to edit the ToDo Controller
+
+    $("#other").click(function () {
+            $("#target").click();
+        });
+
+
+    $("#editToDo").click(function () {
+        //alert(1);
+            var _title = $("#editToDoTitle").val();
+            var _desc = $("#editToDoDesc").val();
+            var _date = $("#editToDoDate").val();
+            var _Id = todoId;
+            var postData = {};
+            postData.Title = _title;
+            postData.Description = _desc;
+            postData.date = _date;
+            postData.Id = parseInt(_Id);
+
+            $.ajax({
+            type: "POST",
+            url: '@Url.Action("Edit", "ToDo")',
+            data: postData,
+            success: function (resultData) {
+                window.location.href = '@Url.Action("ToDoList", "ToDo")';
+            }
+        });
+    });
+
+
+
+    //This deletes the values in ToDo Controller
+         $("#other").click(function () {
+            $("#target").click();
+        });
+         $(".deleteToDo").click(function () {
+             //alert(1);
+             //debugger;
+             var _selectedId = parseInt($(".deleteToDo").attr("id"));
+            $.ajax({
+            type: "POST",
+            url: '@Url.Action("Delete", "ToDo")',
+            data: { id: _selectedId},
+            success: function (resultData) {
+                window.location.href = '@Url.Action("ToDoList", "ToDo")';
+            }
+        });
+    });
+
+         //Details
+         //debugger;
+         //$("#other").click(function () {
+         //    $("#target").click();
+         //});
+
+         function detailsToDo(id) {
+
+        $("#desModal").modal('show');
+        //var className = $("#desModal")[0].className;
+        //$("#desModal").removeClass(className);
+        //$("#desModal").addClass("modal fade show in");
+            //$("#desModal").addClass("modal fade show");
+            //$("#desModal").addClass("modal fade");
+            todoId = id;
+            $("#ToDoId").val(id);
+            $.ajax({
+                type: "GET",
+                url:  '@Url.Action("GetTodoById", "ToDo")',
+                data: { toDoId: id },
+                success: function (resultData) {
+                    $("#detailsToDoTitle").val(resultData.toDoModel.Title);
+                    $("#detailsToDoDesc").text(resultData.toDoModel.Description);
+                    $('#detailsToDoDate').val(moment(resultData.toDoModel.date, "DD/MM/YYYY HH:mm").format("DD/MM/YYYY HH:mm"));
+                    //$("#detailsToDoDate").data("DateTimePicker").date(resultData.toDoModel.date);
+                    //$('.form_datetime').data("DateTimePicker").date(resultData.toDoModel.date);
+                }
+            });
+        }
+
+         $("#other").click(function () {
+             $("#target").click();
+         });
+
+
+</script>

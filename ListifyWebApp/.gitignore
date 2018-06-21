@@ -1,0 +1,5 @@
+ListifyWebApp/bin/
+packages/
+.vs/
+ListifyWebApp/obj/
+ListifyDB/obj/

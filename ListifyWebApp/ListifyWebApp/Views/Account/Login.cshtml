@@ -1,0 +1,404 @@
+﻿@using ListifyWebApp.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+
+<title>Login Page</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<style type="text/css">
+
+    
+    /*for height*/
+    /* --------------------------------------------------------for 1680 by 1050 -------------------------------------------------------------------------------- */
+    html {
+        height: 100%;
+    }
+
+    /*mobile devices*/
+    @@media(max-width:768px)
+    {
+        h1
+        {
+            font-size:30px;
+            font-family:'Lucida Grande';
+        }
+        .form-control {
+            padding: 8px;
+            border-radius: 5px;
+            max-width: 250px !important;
+            width: 100%;
+            height: auto;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 0px !important;
+            text-align: center;
+            color: #DADADA;
+            font-size: 15px;
+            font-family: 'Lucida Grande';
+            /*font-weight: bold;*/
+        }
+
+        .logo {
+            z-index: 3;
+            position: relative;
+            margin-top: 10%;
+            height: auto;
+            max-width: 120px!important;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .btn {
+            width: 180px !important;
+            padding: 2px;
+            border-radius: 25px;
+            background-color: transparent;
+            border-color: white;
+            color: white;
+            border-width: 3px;
+            font-weight: bold;
+            font-size: 20px;
+            font-family: 'Lucida Grande';
+        }
+    }
+
+     /*for ipad*/
+    
+    @@media(width: 768px) {
+        h1 {
+            color: white;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            margin-top: 10%;
+            height: auto;
+            width: 100%;
+            max-width: 100%;
+            font-size: 50px !important;
+            font-family: 'Lucida Grande';
+        }
+
+        .logo {
+            z-index: 3;
+            position: relative;
+            margin-top: 10%;
+            height: auto;
+            max-width: 200px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .form-control {
+            padding: 8px;
+            border-radius: 5px;
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 2px;
+            text-align: center;
+            color: #DADADA;
+            font-size: 20px;
+            font-family: 'Lucida Grande';
+        }
+
+        .btn {
+            width: 250px !important;
+            padding: 4px;
+            border-radius: 25px;
+            background-color: transparent;
+            border-color: white;
+            color: white;
+            border-width: 3px;
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 15px;
+            font-family: 'Lucida Grande';
+        }
+
+        a {
+            color: white;
+            font-size: 20px !important;
+        }
+    }
+
+    /*for ipad-pro*/
+    
+    
+    @@media(width: 1024px) {
+        h1 {
+            color: white;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            margin-top: 10%;
+            height: auto;
+            width: 100%;
+            max-width: 100%;
+            font-size: 70px;
+            font-family: 'Lucida Grande';
+        }
+
+        .logo {
+            z-index: 3;
+            position: relative;
+            margin-top: 10%;
+            height: auto;
+            max-width: 300px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .form-control {
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 550px;
+            width: 100%;
+            height: auto;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 2px;
+            text-align: center;
+            color: #DADADA;
+            font-size: 30px;
+            font-weight: normal;
+            margin-top: 10px;
+            font-family: 'Lucida Grande';
+        }
+
+        .btn {
+            width: 350px !important;
+            padding: 4px;
+            border-radius: 25px;
+            background-color: transparent;
+            border-color: white;
+            color: white;
+            border-width: 3px;
+            font-weight: bold;
+            font-size: 30px;
+            margin-top: 15px;
+            font-family: 'Lucida Grande';
+        }
+
+        a {
+            color: white !important;
+            font-size: 23px !important;
+        }
+    }
+
+    /* ------welcome tag--------- */
+    /*for desktop*/
+    
+    h1 {
+        font-size: 40px;
+        color: white;
+        text-align: center;
+        background-color: transparent;
+        font-family: 'Lucida Grande';
+        position: relative;
+        margin-top: 8% !important;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+    }
+     /*--------------------logo------------*/
+
+       .logo 
+       {
+        z-index: 3;
+        position: relative;
+        margin-top: 7%;
+        height: auto;
+        max-width: 175px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+        display: block;
+        background-color: transparent;
+    }
+
+    .container {
+        text-align: center;
+        z-index: 4;
+        position: relative;
+        background-color: transparent;
+    }
+
+    .form-control {
+        padding: 8px;
+        border-radius: 5px;
+        max-width: 330px;
+        width: 100%;
+        height: auto;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 5px;
+        text-align: center;
+        font-size: 15px;
+        /*-webkit-text-fill-color: #B2B2B2;*/
+        font-family: 'Lucida Grande';
+    }
+    a {
+        font-size: 18px;
+        font-family: 'Lucida Grande';
+        font-weight: normal !important;
+    }
+   
+
+    .btn {
+        width: 210px;
+        padding: 4px;
+        border-radius: 25px;
+        background-color: transparent;
+        border-color: white;
+        color: white;
+        border-width: 3px;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: 'Lucida Grande';
+    }
+
+    a {
+        color: white;
+        font-size: 15px !important;
+        font-family:'Lucida Grande';
+    }
+    body{
+        color:red;
+        font-size:20px;
+        text-align:center;
+
+    }
+    /*.reg {
+        color: white
+    }*/
+        
+       body {
+        background: -webkit-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+        background: -o-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+        background: -ms-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+        background: -moz-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+        background: linear-gradient(179deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 100%;
+    }
+   
+</style>
+
+
+
+
+<body>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        if (ViewBag.IsError != null)
+        {
+            <div class="content-alert">@ViewBag.IsError</div>
+
+            
+        }
+
+        <div class="container">
+            <h1>Welcome</h1>
+        </div>
+        <div>
+            <img class="logo" src="~/Content/Image/logo.png" alt="logo">
+        </div>
+        <div>
+            <br>
+            <br>
+            <div class="container">
+                @*@Html.TextBoxFor(m => m.Name, new { @class = "form-control", type = "text", placeholder = "Email" })
+                    @Html.ValidationMessageFor(m => m.Email)*@
+                <input type="email" id="emailCheck" class="form-control" name="Email" required="required" placeholder="Email" style="color:black">
+
+                @Html.ValidationMessageFor(m => m.Email)
+                <br>
+                <input type="password" id="pswdCheck" class="form-control" name="Password" required="required" placeholder="Password" style="color: black ; text-align:center;">
+                <span id="emailError" style="font-size:15px; color:red"></span>
+                @Html.ValidationMessageFor(m => m.Password)
+
+
+                @*<input type="submit" value="Login" onclick=javascript.validate(test1.value,test2.value)>*@
+
+
+                <br />
+                <br><a href="list2.html">
+                    <button class="btn" onclick="check(this.form)" name="Log In">Log In</button>
+                </a>
+                <br />
+                <span id="loginError" style="font-size:15px; color:red"></span>
+                <br>
+                <br>
+                <a href="@Url.Action("Register","Account")">Not Registered!! Register</a>
+                <br />
+                <a href="@Url.Action("ForgotPassword","Account")">ForgotPassword!! Click here</a>
+            </div>
+
+        </div>
+    }
+</body>
+<form>
+    <script language="javascript">
+        $("#other").click(function () {
+            $("#target").click();
+        });
+
+        $(".btn").click(function () {
+            var _email = $(".form-control").val();
+            var _password = $(".form-control").val();
+            if (_email == "" && _password == "") {
+                $("#emailError").text("Please enter the email and password to login");
+            }
+            
+        });
+
+        //alert(1);
+        //debugger;
+        function check(form)/*function to check userid & password*/ {
+            /*the following code checkes whether the entered userid and password are matching*/
+            var email = $("#emailCheck").val();
+            var pswd = $("#pswdCheck").val();
+            if (form.Email.value != email || form.Password.value != pswd)
+            {
+
+                $("#loginError").text("Please enter the valid email and password to login").show();
+
+            }
+            else
+            {
+                //alert("Error Password or Username")/*displays error message*/
+            }
+        }
+
+
+
+    </script>
+</form>

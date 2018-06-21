@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListifyDB", "ListifyDB\ListifyDB.csproj", "{9365D048-3DDB-4A22-B3D8-2A59FDBF667C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListifyWebApp", "ListifyWebApp\ListifyWebApp.csproj", "{6CDF1B71-6646-40AE-991A-844E06F8C0C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9365D048-3DDB-4A22-B3D8-2A59FDBF667C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9365D048-3DDB-4A22-B3D8-2A59FDBF667C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9365D048-3DDB-4A22-B3D8-2A59FDBF667C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9365D048-3DDB-4A22-B3D8-2A59FDBF667C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CDF1B71-6646-40AE-991A-844E06F8C0C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CDF1B71-6646-40AE-991A-844E06F8C0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CDF1B71-6646-40AE-991A-844E06F8C0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CDF1B71-6646-40AE-991A-844E06F8C0C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C8551CF-2635-4C58-84DC-14363E905E4A}
+	EndGlobalSection
+EndGlobal

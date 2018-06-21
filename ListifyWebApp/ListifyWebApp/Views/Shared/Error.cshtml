@@ -1,0 +1,301 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<style type="text/css">
+
+
+    /*for height*/
+    /* --------------------------------------------------------for 1680 by 1050 -------------------------------------------------------------------------------- */
+    html {
+        height: 100%;
+    }
+
+    /*mobile devices*/
+    @@media(max-width:768px) {
+        h1 {
+            font-size: 30px;
+            font-family: 'Lucida Grande';
+        }
+
+        .form-control {
+            padding: 8px;
+            border-radius: 5px;
+            max-width: 250px !important;
+            width: 100%;
+            height: auto;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 0px !important;
+            text-align: center;
+            color: #DADADA;
+            font-size: 15px;
+            font-family: 'Lucida Grande';
+            /*font-weight: bold;*/
+        }
+
+        .logo {
+            z-index: 3;
+            position: relative;
+            margin-top: 10%;
+            height: auto;
+            max-width: 120px !important;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .btn {
+            width: 180px !important;
+            padding: 2px;
+            border-radius: 25px;
+            background-color: transparent;
+            border-color: white;
+            color: white;
+            border-width: 3px;
+            font-weight: bold;
+            font-size: 20px;
+            font-family: 'Lucida Grande';
+        }
+    }
+
+    /*for ipad*/
+
+    @@media(width: 768px) {
+        h1 {
+            color: white;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            margin-top: 10%;
+            height: auto;
+            width: 100%;
+            max-width: 100%;
+            font-size: 50px !important;
+            font-family: 'Lucida Grande';
+        }
+
+        .logo {
+            z-index: 3;
+            position: relative;
+            margin-top: 10%;
+            height: auto;
+            max-width: 200px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .form-control {
+            padding: 8px;
+            border-radius: 5px;
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 2px;
+            text-align: center;
+            color: #DADADA;
+            font-size: 20px;
+            font-family: 'Lucida Grande';
+        }
+
+        .btn {
+            width: 250px !important;
+            padding: 4px;
+            border-radius: 25px;
+            background-color: transparent;
+            border-color: white;
+            color: white;
+            border-width: 3px;
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 15px;
+            font-family: 'Lucida Grande';
+        }
+
+        a {
+            color: white;
+            font-size: 20px !important;
+        }
+    }
+
+    /*for ipad-pro*/
+
+
+    @@media(width: 1024px) {
+        h1 {
+            color: white;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            margin-top: 10%;
+            height: auto;
+            width: 100%;
+            max-width: 100%;
+            font-size: 70px;
+            font-family: 'Lucida Grande';
+        }
+
+        .logo {
+            z-index: 3;
+            position: relative;
+            margin-top: 10%;
+            height: auto;
+            max-width: 300px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .form-control {
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 550px;
+            width: 100%;
+            height: auto;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 2px;
+            text-align: center;
+            color: #DADADA;
+            font-size: 30px;
+            font-weight: normal;
+            margin-top: 10px;
+            font-family: 'Lucida Grande';
+        }
+
+        .btn {
+            width: 350px !important;
+            padding: 4px;
+            border-radius: 25px;
+            background-color: transparent;
+            border-color: white;
+            color: white;
+            border-width: 3px;
+            font-weight: bold;
+            font-size: 30px;
+            margin-top: 15px;
+            font-family: 'Lucida Grande';
+        }
+
+        a {
+            color: white !important;
+            font-size: 23px !important;
+        }
+    }
+
+    /* ------welcome tag--------- */
+    /*for desktop*/
+
+    h1 {
+        font-size: 40px;
+        color: white;
+        text-align: center;
+        background-color: transparent;
+        font-family: 'Lucida Grande';
+        position: relative;
+        margin-top: 8% !important;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+    }
+    /*--------------------logo------------*/
+
+    .logo {
+        z-index: 3;
+        position: relative;
+        margin-top: 7%;
+        height: auto;
+        max-width: 175px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+        display: block;
+        background-color: transparent;
+    }
+
+    .container {
+        text-align: center;
+        z-index: 4;
+        position: relative;
+        background-color: transparent;
+    }
+
+    .form-control {
+        padding: 8px;
+        border-radius: 5px;
+        max-width: 330px;
+        width: 100%;
+        height: auto;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 5px;
+        text-align: center;
+        font-size: 15px;
+        /*-webkit-text-fill-color: #B2B2B2;*/
+        font-family: 'Lucida Grande';
+    }
+
+    a {
+        font-size: 18px;
+        font-family: 'Lucida Grande';
+        font-weight: normal !important;
+    }
+
+
+    .btn {
+        width: 210px;
+        padding: 4px;
+        border-radius: 25px;
+        background-color: transparent;
+        border-color: white;
+        color: white;
+        border-width: 3px;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: 'Lucida Grande';
+    }
+
+    a {
+        color: white;
+        font-size: 15px !important;
+        font-family: 'Lucida Grande';
+    }
+    /*.reg {
+        color: white
+    }*/
+
+    body {
+        background: -webkit-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+        background: -o-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+        background: -ms-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+        background: -moz-linear-gradient(271deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+        background: linear-gradient(179deg, rgb(25, 111, 197) 10%, rgb(81, 145, 207) 51%, rgb(152, 198, 240) 89%);
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 100%;
+    }
+</style>
+
+<h1 class="text-danger" style="color:red">Invalid login attempt.</h1>
+<p>
+     @Html.ActionLink("click here to log in", "Login", "Account", routeValues: null,
+                                                 htmlAttributes: new { id = "loginLink" })
+</p>
+<p>
+     @Html.ActionLink("click here to Reset your password", "ForgotPassword", "Account", routeValues: null, 
+                                                 htmlAttributes: new { id = "resetlink" })
+</p>
+@*<h2 class="text-danger">An error occurred while processing your request.</h2>*@
+
